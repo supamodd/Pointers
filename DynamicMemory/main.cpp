@@ -57,10 +57,12 @@ void Print(int arr[], const int n)
 	}
 	cout << endl;
 }
-int* push_front(int* arr, int& n, int value) {
+int* push_front(int* arr, int& n, int value) 
+{
     int* new_arr = new int[n + 1];
     new_arr[0] = value;
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) 
+    {
         new_arr[i + 1] = arr[i];
     }
     delete[] arr;
@@ -70,15 +72,19 @@ int* push_front(int* arr, int& n, int value) {
     return new_arr;
 }
 
-int* insert(int* arr, int& n, int index, int value) {
-    if (index < 0 || index > n) {
+int* insert(int* arr, int& n, int index, int value) 
+{
+    if (index < 0 || index > n) 
+    {
         cout << "Ошибка: Индекс вне диапазона!" << endl;
         return arr; // Возвращаем исходный массив без изменений
     }
 
     int* new_arr = new int[n + 1];
-    for (int i = 0, j = 0; i < n + 1; i++) {
-        if (i == index) {
+    for (int i = 0, j = 0; i < n + 1; i++) 
+    {
+        if (i == index) 
+        {
             new_arr[i] = value;
         }
         else {
@@ -99,7 +105,8 @@ int* pop_back(int* arr, int& n) {
     }
 
     int* new_arr = new int[n - 1];
-    for (int i = 0; i < n - 1; i++) {
+    for (int i = 0; i < n - 1; i++) 
+    {
         new_arr[i] = arr[i];
     }
     delete[] arr;
