@@ -127,7 +127,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="dd_pop.cpp" />
+    <ClCompile Include="dd_push.cpp" />
+    <ClCompile Include="FillRand.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="One_d.cpp" />
+    <ClCompile Include="Other_func.cpp" />
+    <ClCompile Include="Print.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="dd_pop.h" />
+    <ClInclude Include="dd_push.h" />
+    <ClInclude Include="FillRand.h" />
+    <ClInclude Include="One_d.h" />
+    <ClInclude Include="Other_func.h" />
+    <ClInclude Include="Print.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
