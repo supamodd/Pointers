@@ -96,7 +96,6 @@ void main()
     cout << "Удалена строка по индексу" << endl;
     Print(arr, rows, cols);
     
-    
     arr = pop_col_back(arr, rows, cols);
     cout << "Удален последний столбец" << endl;
     Print(arr, rows, cols);
@@ -109,11 +108,5 @@ void main()
     cout << "Удален столбец по индексу" << endl;
     Print(arr, rows, cols);
     
-
     Clear(arr, rows);
-    /*for (int i = 0; i < rows; i++)
-    {
-        delete[] arr[i];
-    }
-    delete[] arr;*/
 }
