@@ -53,8 +53,11 @@ void main()
     //(1) Создаем массив указателей:
     int** arr = new int* [rows];
     //(2) Выделяем память под строки двумерного динамического массива:
-    
-    Allocate(rows, cols);
+    for (int i = 0; i < rows; i++)
+    {
+        arr[i] = new int[cols];
+    }
+
     FillRand(arr, rows, cols);
     Print(arr, rows, cols);
 
