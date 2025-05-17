@@ -6,8 +6,6 @@ using namespace std;
 #include"dd_push.h"
 #include"dd_pop.h"
 #include"Other_func.h"
-
-
 //#define DYNAMIC_MEMORY_1
 #define DYNAMIC_MEMORY_2
 
