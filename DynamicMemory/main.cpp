@@ -53,11 +53,8 @@ void main()
     //(1) Создаем массив указателей:
     int** arr = new int* [rows];
     //(2) Выделяем память под строки двумерного динамического массива:
-    for (int i = 0; i < rows; i++)
-    {
-        arr[i] = new int[cols];
-    }
-
+    
+    Allocate(rows, cols);
     FillRand(arr, rows, cols);
     Print(arr, rows, cols);
 
@@ -95,7 +92,6 @@ void main()
     arr = erase_row(arr, rows, cols, 2);
     cout << "Удалена строка по индексу" << endl;
     Print(arr, rows, cols);
-    
     
     arr = pop_col_back(arr, rows, cols);
     cout << "Удален последний столбец" << endl;
