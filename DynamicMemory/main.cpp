@@ -31,7 +31,7 @@ template<typename T>T** pop_col_front(T** arr, int rows, int& cols);
 template<typename T>T** erase_col(T** arr, int rows, int& cols, int index);
 
 #define tab "\t"
-#define delimiter "\n---------------------------------------------\n";
+#define delimiter "\n----------------------------------------------\n";
 
 //#define DYNAMIC_MEMORY_1
 #define DYNAMIC_MEMORY_2
