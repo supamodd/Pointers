@@ -1,4 +1,4 @@
-#include<iostream>
+п»ї#include<iostream>
 using namespace std;
 
 template<typename T>void FillRand(T arr[], const int n);
@@ -43,28 +43,28 @@ void main()
 
 
     int n;
-    cout << "Введите размер массива: "; cin >> n;
+    cout << "Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂ РјР°СЃСЃРёРІР°: "; cin >> n;
     int* arr = new int[n];
     FillRand(arr, n);
     Print(arr, n);
     arr = push_front(arr, n, 100);
-    cout << "добавления элемента в начало: " << endl;
+    cout << "РґРѕР±Р°РІР»РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р° РІ РЅР°С‡Р°Р»Рѕ: " << endl;
     Print(arr, n);
 
     arr = insert(arr, n, 2, 200);
-    cout << "добавление значения по указанному индексу: " << endl;
+    cout << "РґРѕР±Р°РІР»РµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ РїРѕ СѓРєР°Р·Р°РЅРЅРѕРјСѓ РёРЅРґРµРєСЃСѓ: " << endl;
     Print(arr, n);
 
     arr = pop_back(arr, n);
-    cout << "Последний удаленный элемент: " << endl;
+    cout << "РџРѕСЃР»РµРґРЅРёР№ СѓРґР°Р»РµРЅРЅС‹Р№ СЌР»РµРјРµРЅС‚: " << endl;
     Print(arr, n);
 
     arr = pop_front(arr, n);
-    cout << "Нулевой элемент: " << endl;
+    cout << "РќСѓР»РµРІРѕР№ СЌР»РµРјРµРЅС‚: " << endl;
     Print(arr, n);
 
     arr = erase(arr, n, 1);
-    cout << "удаление элемента массива по указанному индексу: " << endl;
+    cout << "СѓРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° РїРѕ СѓРєР°Р·Р°РЅРЅРѕРјСѓ РёРЅРґРµРєСЃСѓ: " << endl;
     Print(arr, n);
     delete[] arr;
     //Memory leak
@@ -72,12 +72,12 @@ void main()
 
     int rows;
     int cols;
-    cout << "Введите количество строк: "; cin >> rows;
-    cout << "Введите количество элементов строк "; cin >> cols;
+    cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕРє: "; cin >> rows;
+    cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ СЃС‚СЂРѕРє "; cin >> cols;
 
-    //(1) Создаем массив указателей:
+    //(1) РЎРѕР·РґР°РµРј РјР°СЃСЃРёРІ СѓРєР°Р·Р°С‚РµР»РµР№:
     int** arr = new int* [rows];
-    //(2) Выделяем память под строки двумерного динамического массива:
+    //(2) Р’С‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ РїРѕРґ СЃС‚СЂРѕРєРё РґРІСѓРјРµСЂРЅРѕРіРѕ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РјР°СЃСЃРёРІР°:
     for (int i = 0; i < rows; i++)
     {
         arr[i] = new int[cols];
@@ -90,48 +90,48 @@ void main()
     Print(arr, rows, cols);
 
     arr = push_row_front(arr, rows, cols);
-    cout << "Добавлена строка в начало " << endl;
+    cout << "Р”РѕР±Р°РІР»РµРЅР° СЃС‚СЂРѕРєР° РІ РЅР°С‡Р°Р»Рѕ " << endl;
     Print(arr, rows, cols);
 
     arr = insert_row(arr, rows, cols, 2);
-    cout << "Добавлена строка по индексу: " << endl;
+    cout << "Р”РѕР±Р°РІР»РµРЅР° СЃС‚СЂРѕРєР° РїРѕ РёРЅРґРµРєСЃСѓ: " << endl;
     Print(arr, rows, cols);
 
     arr = push_col_back(arr, rows, cols);
-    cout << "Добавлен столбец в конец" << endl;
+    cout << "Р”РѕР±Р°РІР»РµРЅ СЃС‚РѕР»Р±РµС† РІ РєРѕРЅРµС†" << endl;
     Print(arr, rows, cols);
 
     arr = push_col_front(arr, rows, cols);
-    cout << "Добавлен столбец в начало" << endl;
+    cout << "Р”РѕР±Р°РІР»РµРЅ СЃС‚РѕР»Р±РµС† РІ РЅР°С‡Р°Р»Рѕ" << endl;
     Print(arr, rows, cols);
 
     arr = insert_col(arr, rows, cols, 2);
-    cout << "Добавлен столбец в середину" << endl;
+    cout << "Р”РѕР±Р°РІР»РµРЅ СЃС‚РѕР»Р±РµС† РІ СЃРµСЂРµРґРёРЅСѓ" << endl;
     Print(arr, rows, cols);
 
     arr = pop_row_back(arr, rows, cols);
-    cout << "Удалена последняя строка" << endl;
+    cout << "РЈРґР°Р»РµРЅР° РїРѕСЃР»РµРґРЅСЏСЏ СЃС‚СЂРѕРєР°" << endl;
     Print(arr, rows, cols);
     
     arr = pop_row_front(arr, rows, cols);
-    cout << "Удалена первая строка" << endl;
+    cout << "РЈРґР°Р»РµРЅР° РїРµСЂРІР°СЏ СЃС‚СЂРѕРєР°" << endl;
     Print(arr, rows, cols);
     
     arr = erase_row(arr, rows, cols, 2);
-    cout << "Удалена строка по индексу" << endl;
+    cout << "РЈРґР°Р»РµРЅР° СЃС‚СЂРѕРєР° РїРѕ РёРЅРґРµРєСЃСѓ" << endl;
     Print(arr, rows, cols);
     
     
     arr = pop_col_back(arr, rows, cols);
-    cout << "Удален последний столбец" << endl;
+    cout << "РЈРґР°Р»РµРЅ РїРѕСЃР»РµРґРЅРёР№ СЃС‚РѕР»Р±РµС†" << endl;
     Print(arr, rows, cols);
     
     arr = pop_col_front(arr, rows, cols);
-    cout << "Удален первый столбец" << endl;
+    cout << "РЈРґР°Р»РµРЅ РїРµСЂРІС‹Р№ СЃС‚РѕР»Р±РµС†" << endl;
     Print(arr, rows, cols);
     
     arr = erase_col(arr, rows, cols, 2);
-    cout << "Удален столбец по индексу" << endl;
+    cout << "РЈРґР°Р»РµРЅ СЃС‚РѕР»Р±РµС† РїРѕ РёРЅРґРµРєСЃСѓ" << endl;
     Print(arr, rows, cols);
     
 
@@ -284,26 +284,26 @@ template<typename T>void Clear(T** arr, int rows)
 
 template<typename T>T** push_row_back(T** arr, int& rows, const int cols)
 {
-    //(1) Создаем буферный массив указателей нужного размера:
+    //(1) РЎРѕР·РґР°РµРј Р±СѓС„РµСЂРЅС‹Р№ РјР°СЃСЃРёРІ СѓРєР°Р·Р°С‚РµР»РµР№ РЅСѓР¶РЅРѕРіРѕ СЂР°Р·РјРµСЂР°:
     T** buffer = new T* [rows + 1];
 
-    //(2) Копируем адреса строк в буферный массив указателей:
+    //(2) РљРѕРїРёСЂСѓРµРј Р°РґСЂРµСЃР° СЃС‚СЂРѕРє РІ Р±СѓС„РµСЂРЅС‹Р№ РјР°СЃСЃРёРІ СѓРєР°Р·Р°С‚РµР»РµР№:
     for (int i = 0; i < rows; i++)
     {
         buffer[i] = arr[i];
     }
 
-    //(3)Удаляем исходный массив указателей:
+    //(3)РЈРґР°Р»СЏРµРј РёСЃС…РѕРґРЅС‹Р№ РјР°СЃСЃРёРІ СѓРєР°Р·Р°С‚РµР»РµР№:
     delete[] arr;
 
 
-    //(4) Создаем добавляемую строку, и записываем ее адрес в массив указателей:
+    //(4) РЎРѕР·РґР°РµРј РґРѕР±Р°РІР»СЏРµРјСѓСЋ СЃС‚СЂРѕРєСѓ, Рё Р·Р°РїРёСЃС‹РІР°РµРј РµРµ Р°РґСЂРµСЃ РІ РјР°СЃСЃРёРІ СѓРєР°Р·Р°С‚РµР»РµР№:
     buffer[rows] = new int[cols] {};
 
-    //(5) При добавлении в массив строки, количество его строк увеличивается на 1:
+    //(5) РџСЂРё РґРѕР±Р°РІР»РµРЅРёРё РІ РјР°СЃСЃРёРІ СЃС‚СЂРѕРєРё, РєРѕР»РёС‡РµСЃС‚РІРѕ РµРіРѕ СЃС‚СЂРѕРє СѓРІРµР»РёС‡РёРІР°РµС‚СЃСЏ РЅР° 1:
     rows++;
 
-    //(6) Возвращаем новый массив на место вызова:
+    //(6) Р’РѕР·РІСЂР°С‰Р°РµРј РЅРѕРІС‹Р№ РјР°СЃСЃРёРІ РЅР° РјРµСЃС‚Рѕ РІС‹Р·РѕРІР°:
     return buffer;
 }
 
@@ -345,19 +345,19 @@ template<typename T>T** insert_row(T** arr, int& rows, int cols, int index)
 
 template<typename T>T** push_col_back(T** arr, int rows, int& cols)
 {
-    cols++;  // Увеличиваем cols
+    cols++;  // РЈРІРµР»РёС‡РёРІР°РµРј cols
 
-    // Выделяем новый массив
+    // Р’С‹РґРµР»СЏРµРј РЅРѕРІС‹Р№ РјР°СЃСЃРёРІ
     T** new_arr = new T* [rows];
     for (int i = 0; i < rows; ++i)
     {
-        new_arr[i] = new int[cols] {}; // Выделяем память под строку
+        new_arr[i] = new int[cols] {}; // Р’С‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ РїРѕРґ СЃС‚СЂРѕРєСѓ
         for (int j = 0; j < cols - 1; ++j)
-        { //Копируем старые значения
+        { //РљРѕРїРёСЂСѓРµРј СЃС‚Р°СЂС‹Рµ Р·РЅР°С‡РµРЅРёСЏ
             new_arr[i][j] = arr[i][j];
         }
     }
-    // Освобождаем память, выделенную под старый массив
+    // РћСЃРІРѕР±РѕР¶РґР°РµРј РїР°РјСЏС‚СЊ, РІС‹РґРµР»РµРЅРЅСѓСЋ РїРѕРґ СЃС‚Р°СЂС‹Р№ РјР°СЃСЃРёРІ
     for (int i = 0; i < rows; ++i)
     {
         delete[] arr[i];
@@ -370,21 +370,21 @@ template<typename T>T** push_col_back(T** arr, int rows, int& cols)
 
 template<typename T>T** push_col_front(T** arr, int rows, int& cols)
 {
-    cols++;  // Увеличиваем cols
+    cols++;  // РЈРІРµР»РёС‡РёРІР°РµРј cols
 
-    // Выделяем новый массив
+    // Р’С‹РґРµР»СЏРµРј РЅРѕРІС‹Р№ РјР°СЃСЃРёРІ
     T** new_arr = new T* [rows];
     for (int i = 0; i < rows; ++i)
     {
-        new_arr[i] = new int[cols] {}; // Выделяем память под строку
-        new_arr[i][0] = 0; // Заполняем первый столбец нулями
+        new_arr[i] = new int[cols] {}; // Р’С‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ РїРѕРґ СЃС‚СЂРѕРєСѓ
+        new_arr[i][0] = 0; // Р—Р°РїРѕР»РЅСЏРµРј РїРµСЂРІС‹Р№ СЃС‚РѕР»Р±РµС† РЅСѓР»СЏРјРё
 
         for (int j = 0; j < cols - 1; ++j)
         {
             new_arr[i][j + 1] = arr[i][j];
         }
     }
-    // Освобождаем память, выделенную под старый массив
+    // РћСЃРІРѕР±РѕР¶РґР°РµРј РїР°РјСЏС‚СЊ, РІС‹РґРµР»РµРЅРЅСѓСЋ РїРѕРґ СЃС‚Р°СЂС‹Р№ РјР°СЃСЃРёРІ
     for (int i = 0; i < rows; ++i)
     {
         delete[] arr[i];
@@ -397,18 +397,18 @@ template<typename T>T** push_col_front(T** arr, int rows, int& cols)
 
 template<typename T>T** insert_col(T** arr, int rows, int& cols, int index)
 {
-    cols++;  // Увеличиваем cols
+    cols++;  // РЈРІРµР»РёС‡РёРІР°РµРј cols
 
-    // Выделяем новый массив
+    // Р’С‹РґРµР»СЏРµРј РЅРѕРІС‹Р№ РјР°СЃСЃРёРІ
     T** new_arr = new T* [rows];
     for (int i = 0; i < rows; ++i)
     {
-        new_arr[i] = new int[cols] {}; // Выделяем память под строку
+        new_arr[i] = new int[cols] {}; // Р’С‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ РїРѕРґ СЃС‚СЂРѕРєСѓ
 
         for (int j = 0, k = 0; j < cols; ++j)
-        { //Копируем старые значения
+        { //РљРѕРїРёСЂСѓРµРј СЃС‚Р°СЂС‹Рµ Р·РЅР°С‡РµРЅРёСЏ
             if (j == index) {
-                new_arr[i][j] = 0;  // Заполняем столбец в нужном индексе нулями
+                new_arr[i][j] = 0;  // Р—Р°РїРѕР»РЅСЏРµРј СЃС‚РѕР»Р±РµС† РІ РЅСѓР¶РЅРѕРј РёРЅРґРµРєСЃРµ РЅСѓР»СЏРјРё
             }
             else {
                 new_arr[i][j] = arr[i][k];
@@ -416,7 +416,7 @@ template<typename T>T** insert_col(T** arr, int rows, int& cols, int index)
             }
         }
     }
-    // Освобождаем память, выделенную под старый массив
+    // РћСЃРІРѕР±РѕР¶РґР°РµРј РїР°РјСЏС‚СЊ, РІС‹РґРµР»РµРЅРЅСѓСЋ РїРѕРґ СЃС‚Р°СЂС‹Р№ РјР°СЃСЃРёРІ
     for (int i = 0; i < rows; ++i)
     {
         delete[] arr[i];
@@ -431,7 +431,7 @@ template<typename T>T** pop_row_back(T** arr, int& rows, int cols)
     T** new_arr = new T* [rows - 1];
     for (int i = 0; i < rows - 1; i++) 
     {
-        new_arr[i] = arr[i]; //Копируем память в массив.
+        new_arr[i] = arr[i]; //РљРѕРїРёСЂСѓРµРј РїР°РјСЏС‚СЊ РІ РјР°СЃСЃРёРІ.
     }
 
 
@@ -445,7 +445,7 @@ template<typename T>T** pop_row_front(T** arr, int& rows, int cols)
     T** new_arr = new T* [rows - 1];
     for (int i = 1; i < rows; i++) 
     {
-        new_arr[i - 1] = arr[i]; //Копируем память в массив.
+        new_arr[i - 1] = arr[i]; //РљРѕРїРёСЂСѓРµРј РїР°РјСЏС‚СЊ РІ РјР°СЃСЃРёРІ.
     }
 
     delete[] arr;
@@ -456,7 +456,7 @@ template<typename T>T** pop_row_front(T** arr, int& rows, int cols)
 template<typename T>T** erase_row(T** arr, int& rows, int cols, int index)
 {
     T** new_arr = new T* [rows - 1];
-    int k = 0; // Индекс для нового массива
+    int k = 0; // РРЅРґРµРєСЃ РґР»СЏ РЅРѕРІРѕРіРѕ РјР°СЃСЃРёРІР°
     for (int i = 0; i < rows; ++i) 
     {
         if (i == index)
@@ -464,12 +464,12 @@ template<typename T>T** erase_row(T** arr, int& rows, int cols, int index)
 
             continue;
         }
-        new_arr[k] = arr[i]; // Копируем указатель на строку
+        new_arr[k] = arr[i]; // РљРѕРїРёСЂСѓРµРј СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЃС‚СЂРѕРєСѓ
         k++;
     }
 
 
-    delete[] arr; // Освобождаем память под старый массив
+    delete[] arr; // РћСЃРІРѕР±РѕР¶РґР°РµРј РїР°РјСЏС‚СЊ РїРѕРґ СЃС‚Р°СЂС‹Р№ РјР°СЃСЃРёРІ
     rows--;
 
     return new_arr;
@@ -477,11 +477,11 @@ template<typename T>T** erase_row(T** arr, int& rows, int cols, int index)
 
 template<typename T>T** pop_col_back(T** arr, int rows, int& cols)
 {
-    //Создаем новый массив
+    //РЎРѕР·РґР°РµРј РЅРѕРІС‹Р№ РјР°СЃСЃРёРІ
     T** new_arr = new T* [rows];
     for (int i = 0; i < rows; i++)
     {
-        new_arr[i] = new int[cols - 1] {}; // Выделяем память под строку
+        new_arr[i] = new int[cols - 1] {}; // Р’С‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ РїРѕРґ СЃС‚СЂРѕРєСѓ
 
         for (int j = 0; j < cols - 1; j++)
         {
@@ -500,11 +500,11 @@ template<typename T>T** pop_col_back(T** arr, int rows, int& cols)
 
 template<typename T>T** pop_col_front(T** arr, int rows, int& cols)
 {
-    //Создаем новый массив
+    //РЎРѕР·РґР°РµРј РЅРѕРІС‹Р№ РјР°СЃСЃРёРІ
     T** new_arr = new T* [rows];
     for (int i = 0; i < rows; i++)
     {
-        new_arr[i] = new int[cols - 1] {}; // Выделяем память под строку
+        new_arr[i] = new int[cols - 1] {}; // Р’С‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ РїРѕРґ СЃС‚СЂРѕРєСѓ
 
         for (int j = 1; j < cols; j++)
         {
@@ -524,11 +524,11 @@ template<typename T>T** pop_col_front(T** arr, int rows, int& cols)
 
 template<typename T>T** erase_col(T** arr, int rows, int& cols, int index)
 {
-    //Создаем новый массив
+    //РЎРѕР·РґР°РµРј РЅРѕРІС‹Р№ РјР°СЃСЃРёРІ
     T** new_arr = new T* [rows];
     for (int i = 0; i < rows; i++)
     {
-        new_arr[i] = new int[cols - 1] {}; // Выделяем память под строку
+        new_arr[i] = new int[cols - 1] {}; // Р’С‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ РїРѕРґ СЃС‚СЂРѕРєСѓ
 
         for (int j = 0, k = 0; j < cols; j++)
         {
