@@ -341,27 +341,19 @@ T** insert_row(T** arr, int& rows, int cols, int index)
 template<typename T>
 T** push_col_back(T** arr, int rows, int& cols)
 {
-    int new_cols = cols + 1;
+    cols++;  // ??????????? cols
 
-    // Create a new array
+    // ???????? ????? ??????
     T** new_arr = new T * [rows];
     for (int i = 0; i < rows; ++i)
     {
-        new_arr[i] = new T[new_cols]{}; // Allocate memory for new row
-
-        // Copy data from old row to the new row
-        for (int j = 0; j < cols; ++j)
-        { // Copy existing elements
+        new_arr[i] = new int[cols] {}; // ???????? ?????? ??? ??????
+        for (int j = 0; j < cols - 1; ++j)
+        { //???????? ?????? ????????
             new_arr[i][j] = arr[i][j];
         }
-        for (int j = cols; j < new_cols; ++j) {
-            std::random_device rd;
-            std::mt19937 gen(rd());
-            std::uniform_int_distribution<> distrib(0, 100);
-            new_arr[i][j] = distrib(gen);
-        }
     }
-    // Free memory allocated for the old array
+    // ??????????? ??????, ?????????? ??? ?????? ??????
     for (int i = 0; i < rows; ++i)
     {
         delete[] arr[i];
@@ -369,7 +361,6 @@ T** push_col_back(T** arr, int rows, int& cols)
     delete[] arr;
 
 
-    cols = new_cols;
     return new_arr;
 }
 
