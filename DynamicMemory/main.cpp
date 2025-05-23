@@ -1,4 +1,4 @@
-#include<iostream>
+п»ї#include<iostream>
 #include<algorithm>
 using namespace std;
 
@@ -44,28 +44,28 @@ void main()
 
 
     int n;
-    cout << "Введите размер массива: "; cin >> n;
+    cout << "Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂ РјР°СЃСЃРёРІР°: "; cin >> n;
     int* arr = new int[n];
     FillRand(arr, n);
     Print(arr, n);
     arr = push_front(arr, n, 100);
-    cout << "добавления элемента в начало: " << endl;
+    cout << "РґРѕР±Р°РІР»РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р° РІ РЅР°С‡Р°Р»Рѕ: " << endl;
     Print(arr, n);
 
     arr = insert(arr, n, 2, 200);
-    cout << "добавление значения по указанному индексу: " << endl;
+    cout << "РґРѕР±Р°РІР»РµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ РїРѕ СѓРєР°Р·Р°РЅРЅРѕРјСѓ РёРЅРґРµРєСЃСѓ: " << endl;
     Print(arr, n);
 
     arr = pop_back(arr, n);
-    cout << "Последний удаленный элемент: " << endl;
+    cout << "РџРѕСЃР»РµРґРЅРёР№ СѓРґР°Р»РµРЅРЅС‹Р№ СЌР»РµРјРµРЅС‚: " << endl;
     Print(arr, n);
 
     arr = pop_front(arr, n);
-    cout << "Нулевой элемент: " << endl;
+    cout << "РќСѓР»РµРІРѕР№ СЌР»РµРјРµРЅС‚: " << endl;
     Print(arr, n);
 
     arr = erase(arr, n, 1);
-    cout << "удаление элемента массива по указанному индексу: " << endl;
+    cout << "СѓРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° РїРѕ СѓРєР°Р·Р°РЅРЅРѕРјСѓ РёРЅРґРµРєСЃСѓ: " << endl;
     Print(arr, n);
     delete[] arr;
     //Memory leak
@@ -73,12 +73,12 @@ void main()
 
     int rows;
     int cols;
-    cout << "Введите количество строк: "; cin >> rows;
-    cout << "Введите количество элементов строк "; cin >> cols;
+    cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕРє: "; cin >> rows;
+    cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ СЃС‚СЂРѕРє "; cin >> cols;
 
-    //(1) Создаем массив указателей:
+    //(1) РЎРѕР·РґР°РµРј РјР°СЃСЃРёРІ СѓРєР°Р·Р°С‚РµР»РµР№:
     int** arr = new int* [rows];
-    //(2) Выделяем память под строки двумерного динамического массива:
+    //(2) Р’С‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ РїРѕРґ СЃС‚СЂРѕРєРё РґРІСѓРјРµСЂРЅРѕРіРѕ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РјР°СЃСЃРёРІР°:
     for (int i = 0; i < rows; i++)
     {
         arr[i] = new int[cols];
@@ -91,48 +91,48 @@ void main()
     Print(arr, rows, cols);
 
     arr = push_row_front(arr, rows, cols);
-    cout << "Добавлена строка в начало " << endl;
+    cout << "Р”РѕР±Р°РІР»РµРЅР° СЃС‚СЂРѕРєР° РІ РЅР°С‡Р°Р»Рѕ " << endl;
     Print(arr, rows, cols);
 
     arr = insert_row(arr, rows, cols, 2);
-    cout << "Добавлена строка по индексу: " << endl;
+    cout << "Р”РѕР±Р°РІР»РµРЅР° СЃС‚СЂРѕРєР° РїРѕ РёРЅРґРµРєСЃСѓ: " << endl;
     Print(arr, rows, cols);
 
     arr = push_col_back(arr, rows, cols);
-    cout << "Добавлен столбец в конец" << endl;
+    cout << "Р”РѕР±Р°РІР»РµРЅ СЃС‚РѕР»Р±РµС† РІ РєРѕРЅРµС†" << endl;
     Print(arr, rows, cols);
 
     arr = push_col_front(arr, rows, cols);
-    cout << "Добавлен столбец в начало" << endl;
+    cout << "Р”РѕР±Р°РІР»РµРЅ СЃС‚РѕР»Р±РµС† РІ РЅР°С‡Р°Р»Рѕ" << endl;
     Print(arr, rows, cols);
 
     arr = insert_col(arr, rows, cols, 2);
-    cout << "Добавлен столбец в середину" << endl;
+    cout << "Р”РѕР±Р°РІР»РµРЅ СЃС‚РѕР»Р±РµС† РІ СЃРµСЂРµРґРёРЅСѓ" << endl;
     Print(arr, rows, cols);
 
     arr = pop_row_back(arr, rows, cols);
-    cout << "Удалена последняя строка" << endl;
+    cout << "РЈРґР°Р»РµРЅР° РїРѕСЃР»РµРґРЅСЏСЏ СЃС‚СЂРѕРєР°" << endl;
     Print(arr, rows, cols);
     
     arr = pop_row_front(arr, rows, cols);
-    cout << "Удалена первая строка" << endl;
+    cout << "РЈРґР°Р»РµРЅР° РїРµСЂРІР°СЏ СЃС‚СЂРѕРєР°" << endl;
     Print(arr, rows, cols);
     
     arr = erase_row(arr, rows, cols, 2);
-    cout << "Удалена строка по индексу" << endl;
+    cout << "РЈРґР°Р»РµРЅР° СЃС‚СЂРѕРєР° РїРѕ РёРЅРґРµРєСЃСѓ" << endl;
     Print(arr, rows, cols);
     
     
     arr = pop_col_back(arr, rows, cols);
-    cout << "Удален последний столбец" << endl;
+    cout << "РЈРґР°Р»РµРЅ РїРѕСЃР»РµРґРЅРёР№ СЃС‚РѕР»Р±РµС†" << endl;
     Print(arr, rows, cols);
     
     arr = pop_col_front(arr, rows, cols);
-    cout << "Удален первый столбец" << endl;
+    cout << "РЈРґР°Р»РµРЅ РїРµСЂРІС‹Р№ СЃС‚РѕР»Р±РµС†" << endl;
     Print(arr, rows, cols);
     
     arr = erase_col(arr, rows, cols, 2);
-    cout << "Удален столбец по индексу" << endl;
+    cout << "РЈРґР°Р»РµРЅ СЃС‚РѕР»Р±РµС† РїРѕ РёРЅРґРµРєСЃСѓ" << endl;
     Print(arr, rows, cols);
     
 
