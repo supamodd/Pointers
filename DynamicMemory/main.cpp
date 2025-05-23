@@ -1,4 +1,5 @@
 #include<iostream>
+#include<algorithm>
 using namespace std;
 
 template<typename T>void FillRand(T arr[], const int n);
@@ -283,292 +284,203 @@ template<typename T>void Clear(T** arr, int rows)
 }
 
 template<typename T>
-void copyArray(T* dest, T* src, int size) {
-    for (int i = 0; i < size; ++i) {
+void copyArray(T* dest, T* src, int size) 
+{
+    for (int i = 0; i < size; ++i) 
+    {
         dest[i] = src[i];
     }
 }
 
-template<typename T>
-T** push_row_back(T** arr, int& rows, const int cols) {
-    T** new_arr = new T * [rows + 1];  // ???????? ?????? ??? ?????? ?????????? ??????? ???????
+template <typename T>
+T** push_row_back(T** arr, int& rows, const int cols) 
+{
+    T** new_arr = Allocate<T>(rows + 1, cols);
     for (int i = 0; i < rows; ++i) {
-        new_arr[i] = arr[i];  // ???????? ???????? ?? ??????
+        copy(arr[i], arr[i] + cols, new_arr[i]);
     }
-
-    new_arr[rows] = new T[cols]{};  // ???????? ?????? ??? ?????? ??????????? ??????
-
-    rows++;  // ?????????? ?????????? ?????
-
-    delete[] arr;  // ??????????? ??????
-    return new_arr;
-}
-template<typename T>
-T** push_row_front(T** arr, int& rows, int cols)
-{
-    T** new_arr = new T * [rows + 1];
-    new_arr[0] = new T[cols]{};
-    for (int i = 0; i < rows; i++)
-    {
-        new_arr[i + 1] = arr[i];
-    }
+    Clear(arr, rows);
     rows++;
-    delete[] arr;
     return new_arr;
 }
-template<typename T>
-T** insert_row(T** arr, int& rows, int cols, int index)
-{
-    T** new_arr = new T * [rows + 1];
-    for (int i = 0, j = 0; i < rows + 1; i++)
-    {
-        if (i == index)
-        {
-            new_arr[i] = new T[cols]{};
-        }
-        else
-        {
-            new_arr[i] = arr[j];
-            j++;
-        }
 
+template <typename T>
+T** push_row_front(T** arr, int& rows, int cols) 
+{
+    T** new_arr = Allocate<T>(rows + 1, cols);
+    for (int i = 0; i < rows; ++i) 
+    {
+        copy(arr[i], arr[i] + cols, new_arr[i + 1]);
     }
+    Clear(arr, rows);
     rows++;
-    delete[] arr;
-
     return new_arr;
 }
-template<typename T>
-T** push_col_back(T** arr, int rows, int& cols)
+
+template <typename T>
+T** insert_row(T** arr, int& rows, int cols, int index) 
 {
-    cols++;  // ??????????? cols
-
-    // ???????? ????? ??????
-    T** new_arr = new T * [rows];
-    for (int i = 0; i < rows; ++i)
-    {
-        new_arr[i] = new int[cols] {}; // ???????? ?????? ??? ??????
-        for (int j = 0; j < cols - 1; ++j)
-        { //???????? ?????? ????????
-            new_arr[i][j] = arr[i][j];
-        }
+    T** new_arr = Allocate<T>(rows + 1, cols);
+    for (int i = 0; i < index; ++i) {
+        copy(arr[i], arr[i] + cols, new_arr[i]);
     }
-    // ??????????? ??????, ?????????? ??? ?????? ??????
-    for (int i = 0; i < rows; ++i)
-    {
-        delete[] arr[i];
+    for (int i = index; i < rows; ++i) {
+        copy(arr[i], arr[i] + cols, new_arr[i + 1]);
     }
-    delete[] arr;
-
-
+    Clear(arr, rows);
+    rows++;
     return new_arr;
 }
 
-template<typename T>
-T** push_col_front(T** arr, int rows, int& cols)
+template <typename T>
+T** push_col_back(T** arr, int rows, int& cols) 
+{
+cols++;  
+
+
+T** new_arr = new T * [rows];
+for (int i = 0; i < rows; ++i)
+{
+    new_arr[i] = new int[cols] {}; 
+    for (int j = 0; j < cols - 1; ++j)
+    {
+        new_arr[i][j] = arr[i][j];
+    }
+}
+
+for (int i = 0; i < rows; ++i)
+{
+    delete[] arr[i];
+}
+delete[] arr;
+
+
+return new_arr;
+}
+
+template <typename T>
+T** push_col_front(T** arr, int rows, int& cols) 
 {
     int new_cols = cols + 1;
+    T** new_arr = Allocate<T>(rows, new_cols);
 
-    // Create a new array
-    T** new_arr = new T * [rows];
-    for (int i = 0; i < rows; ++i)
+    for (int i = 0; i < rows; ++i) 
     {
-        new_arr[i] = new T[new_cols]{};  // ???????? ?????? ??? ??????
-        new_arr[i][0] = 0; // Set the new element to 0
-        for (int j = 0; j < cols; ++j)
+        new_arr[i][0] = 0;
+        copy(arr[i], arr[i] + cols, new_arr[i] + 1);
+    }
+    Clear(arr, rows);
+    cols = new_cols;
+    return new_arr;
+}
+
+template <typename T>
+T** insert_col(T** arr, int rows, int& cols, int index) 
+{
+    int new_cols = cols + 1;
+    T** new_arr = Allocate<T>(rows, new_cols);
+
+    for (int i = 0; i < rows; ++i) 
+    {
+        for (int j = 0; j < index; ++j) 
+        {
+            new_arr[i][j] = arr[i][j];
+        }
+        new_arr[i][index] = 0;
+        for (int j = index; j < cols; ++j) 
         {
             new_arr[i][j + 1] = arr[i][j];
         }
     }
 
-    // Free memory allocated for the old array
-    for (int i = 0; i < rows; ++i)
-    {
-        delete[] arr[i];
-    }
-    delete[] arr;
-
-
+    Clear(arr, rows);
     cols = new_cols;
     return new_arr;
 }
 
-template<typename T>
-T** insert_col(T** arr, int rows, int& cols, int index)
+template <typename T>
+T** pop_row_back(T** arr, int& rows, int cols) 
 {
-    int new_cols = cols + 1;
-
-    // Create a new array
-    T** new_arr = new T * [rows];
-    for (int i = 0; i < rows; ++i)
+    T** new_arr = Allocate<T>(rows - 1, cols);
+    for (int i = 0; i < rows - 1; ++i) 
     {
-        new_arr[i] = new T[new_cols]{}; // ???????? ?????? ??? ??????
-
-        for (int j = 0, k = 0; j < new_cols; ++j)
-        { //Copy the content array
-            if (j == index) {
-                new_arr[i][j] = 0;  // Insert the new element in the specified index
-            }
-            else {
-                new_arr[i][j] = arr[i][k];
-                k++;
-            }
-        }
+        copy(arr[i], arr[i] + cols, new_arr[i]);
     }
-    // Free memory allocated for the old array
-    for (int i = 0; i < rows; ++i)
-    {
-        delete[] arr[i];
-    }
-    delete[] arr;
-
-    cols = new_cols;
-    return new_arr;
-}
-
-template<typename T>
-T** pop_row_back(T** arr, int& rows, int cols)
-{
-    T** new_arr = new T * [rows - 1];
-    for (int i = 0; i < rows - 1; i++)
-    {
-        new_arr[i] = arr[i]; //???????? ?????? ? ??????.
-    }
-    for (int i = 0; i < rows; ++i) {
-        delete[] arr[i];
-    }
-
-    delete[] arr;
+    Clear(arr, rows);
     rows--;
     return new_arr;
 }
 
-template<typename T>
-T** pop_row_front(T** arr, int& rows, int cols)
+template <typename T>
+T** pop_row_front(T** arr, int& rows, int cols) 
 {
-    T** new_arr = new T * [rows - 1];
-    for (int i = 1; i < rows; i++)
+    T** new_arr = Allocate<T>(rows - 1, cols);
+    for (int i = 1; i < rows; ++i) 
     {
-        new_arr[i - 1] = arr[i]; //???????? ?????? ? ??????.
+        copy(arr[i], arr[i] + cols, new_arr[i - 1]);
     }
-    for (int i = 0; i < rows; ++i) {
-        delete[] arr[i];
-    }
-
-    delete[] arr;
+    Clear(arr, rows);
     rows--;
     return new_arr;
 }
 
-template<typename T>
+template <typename T>
 T** erase_row(T** arr, int& rows, int cols, int index)
 {
-    T** new_arr = new T * [rows - 1];
-    int k = 0; // ?????? ??? ?????? ???????
-    for (int i = 0; i < rows; ++i)
+    T** new_arr = Allocate<T>(rows - 1, cols);
+    for (int i = 0, k = 0; i < rows; ++i) 
     {
-        if (i == index)
-        {
-
-            continue;
-        }
-        new_arr[k] = arr[i]; // ???????? ????????? ?? ??????
+        if (i == index) continue;
+        copy(arr[i], arr[i] + cols, new_arr[k]);
         k++;
     }
-
-    for (int i = 0; i < rows; ++i) {
-        delete[] arr[i];
-    }
-    delete[] arr;
-
+    Clear(arr, rows);
     rows--;
-
     return new_arr;
 }
 
-template<typename T>
+template <typename T>
 T** pop_col_back(T** arr, int rows, int& cols)
 {
-    //??????? ????? ??????
-    T** new_arr = new T * [rows];
-    for (int i = 0; i < rows; i++)
+    int new_cols = cols - 1;
+    T** new_arr = Allocate<T>(rows, new_cols);
+    for (int i = 0; i < rows; ++i) 
     {
-        new_arr[i] = new T[cols - 1]{}; // ???????? ?????? ??? ??????
-
-        for (int j = 0; j < cols - 1; j++)
-        {
-            new_arr[i][j] = arr[i][j];
-
-        }
-
-
-    }for (int i = 0; i < rows; ++i) {
-        delete[] arr[i];
+        copy(arr[i], arr[i] + new_cols, new_arr[i]);
     }
-    delete[] arr;
-
-
+    Clear(arr, rows);
     cols--;
-
     return new_arr;
 }
 
-template<typename T>
-T** pop_col_front(T** arr, int rows, int& cols)
+template <typename T>
+T** pop_col_front(T** arr, int rows, int& cols) 
 {
-    //??????? ????? ??????
-    T** new_arr = new T * [rows];
-    for (int i = 0; i < rows; i++)
+    int new_cols = cols - 1;
+    T** new_arr = Allocate<T>(rows, new_cols);
+    for (int i = 0; i < rows; ++i) 
     {
-        new_arr[i] = new T[cols - 1]{}; // ???????? ?????? ??? ??????
-
-        for (int j = 1; j < cols; j++)
-        {
-            new_arr[i][j - 1] = arr[i][j];
-        }
-        for (int i = 0; i < rows; ++i) {
-            delete[] arr[i];
-        }
-        delete[] arr;
-
+        copy(arr[i] + 1, arr[i] + cols, new_arr[i]);
     }
+    Clear(arr, rows);
+    cols--;
+    return new_arr;
+}
+
+template <typename T>
+T** erase_col(T** arr, int rows, int& cols, int index) 
+{
+    int new_cols = cols - 1;
+    T** new_arr = Allocate<T>(rows, new_cols);
     for (int i = 0; i < rows; ++i) {
-        delete[] arr[i];
-    }
-    delete[] arr;
-
-
-    cols--;
-
-    return new_arr;
-}
-
-template<typename T>
-T** erase_col(T** arr, int rows, int& cols, int index)
-{
-    //??????? ????? ??????
-    T** new_arr = new T * [rows];
-    for (int i = 0; i < rows; i++)
-    {
-        new_arr[i] = new T[cols - 1]{}; // ???????? ?????? ??? ??????
-
-        for (int j = 0, k = 0; j < cols; j++)
+        for (int j = 0, k = 0; j < cols; ++j)
         {
-            if (j == index)
-            {
-                continue;
-            }
-            else
-            {
-                new_arr[i][k] = arr[i][j];
-                k++;
-            }
+            if (j == index) continue;
+            new_arr[i][k] = arr[i][j];
+            k++;
         }
-        delete[] arr[i];
-
     }
-    delete[] arr;
-
+    Clear(arr, rows);
     cols--;
     return new_arr;
 }
